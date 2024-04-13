@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import { Colors } from '../config';
 
 const Card = ({ imageSource, title, description }) => {
   return (
     <View style={styles.card}>
       <Image source={imageSource} style={styles.image} />
       <View style={styles.content}>
-        <Text style={styles.title}>Name: {title}</Text>
-        <Text style={styles.description}>Name: {title}</Text>
-        <Text style={styles.description}>Course: {description}</Text>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.description}>{description}</Text>
       </View>
     </View>
   );
@@ -16,9 +16,10 @@ const Card = ({ imageSource, title, description }) => {
 
 const styles = StyleSheet.create({
   card: {
+    backgroundColor: Colors.cream,
     flexDirection: 'row',
     borderRadius: 10,
-    backgroundColor: '#fff',
+    //backgroundColor: '#fff',
     marginVertical: 15,
     marginHorizontal: 15,
     shadowColor: '#000',

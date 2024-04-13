@@ -8,13 +8,13 @@ export const HouseScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.topbar}>
-        <Text style={styles.text}>Possible housemates</Text>
+        <Text style={styles.text}>Potential housemates</Text>
 
         <SettingsIcon></SettingsIcon>
       </View>
       <ScrollView style={styles.cardContainer}>
-      <Card title={"test"} description={"test desc"} imageSource={require("../assets/flame.png")}></Card>
-      <Card title={"test"} description={"test desc"} imageSource={require("../assets/flame.png")}></Card>
+      <Card title={"Louis Viner"} description={"Hi! I am a second year student looking for housemates"} imageSource={require("../assets/PersonOne.jpeg")}></Card>
+      <Card title={"Alfie Downing"} description={"Please need friends"} imageSource={require("../assets/Person2.jpeg")}></Card>
       </ScrollView>
     </View>
   );
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 70,
     flex: 1,
-    backgroundColor:Colors.darkGray,
+    backgroundColor:Colors.lightGreen,
   },
   topbar:{
     flexDirection:'row',
@@ -35,14 +35,14 @@ const styles = StyleSheet.create({
     marginRight:20,
   },
   text:{
-    color: Colors.white,
-    fontSize: 20,
+    color: Colors.darkGreen,
+    fontSize: 33,
     fontWeight: 'bold',
     marginLeft: 20,
   },
   cardContainer:{
     marginVertical:10,
-    backgroundColor:Colors.black,
+    backgroundColor:Colors.darkGreen,
     marginHorizontal:20,
     borderRadius:10,
   }
