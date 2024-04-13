@@ -18,7 +18,9 @@ export const FriendsScreen = () => {
         transparent={true}
         visible={modalVisible}>
           <UserDetail/>
-          <Button title = "close" onPress={changeModalVisible}></Button>
+          <View style={{backgroundColor:Colors.darkGray, paddingBottom:70}}>
+          <Button title = "close" onPress={changeModalVisible} ></Button>
+          </View>
         </Modal>
     </View>
   );

@@ -5,22 +5,18 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Colors } from '../config';
 
-const UserDetail = () => {
-  const [name, setName] = useState('');
-  const [DoB, setDoB] = useState(new Date(0));
-  const [desc, setDesc] = useState("");
-  const [gender, setGender] = useState("");
+const UserPreferences = () => {
+  const [gender, setGender] = useState('');
+  const [city, setCity] = useState('');
+  const [people, setPeople] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const [minPrice, setMinPrice] = useState("");
   const [open, setOpen] = useState(false);
-
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate;
-    setDoB(currentDate);
-  };
 
   const [items, setItems] = useState([
     {label: 'Male', value: 'Male'},
     {label: 'Female', value: 'Female'},
-    {label: 'Other', value: 'Other'}
+    {label: 'Mixed', value: 'Mixed'}
   ]);
 
   const handleSubmit = () => {
@@ -33,37 +29,48 @@ const UserDetail = () => {
   return (
     <View style={styles.container}>
     <View style={styles.row}>
-    <Text style={styles.label}>Name: </Text>
+    <Text style={styles.label}>City: </Text>
       <TextInput
         style={{fontSize:20,width:200}}
-        placeholder="Name"
-        value={name}
-        onChangeText={text => setName(text)}
-        multiline = {false}
-      />
-      </View>
-
-      <View style={styles.row}>
-    <Text style={styles.label}>description: </Text>
-      <TextInput
-        style={{fontSize:20,width:200}}
-        placeholder="..."
-        value={desc}
-        onChangeText={text => setDesc(text)}
+        placeholder="City"
+        value={city}
+        onChangeText={text => setCity(text)}
         multiline = {false}
       />
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>Date of Birth: </Text>
-        <DateTimePicker
-            style = {{}}
-            testID="Set Date of Birth"
-            value={DoB}
-            mode='date'
-            is24Hour={true}
-            onChange={onChange}
-        />
-        </View>
+    <Text style={styles.label}>Max people: </Text>
+      <TextInput
+         keyboardType='numeric'
+        style={{fontSize:20,width:200}}
+        placeholder="Max people"
+        value={people}
+        onChangeText={text => setPeople(text)}
+        multiline = {false}
+      />
+      </View>
+      <View style={styles.row}>
+    <Text style={styles.label}>Max price: </Text>
+      <TextInput
+         keyboardType='numeric'
+        style={{fontSize:20,width:200}}
+        placeholder="Max price"
+        value={maxPrice}
+        onChangeText={text => setMaxPrice(text)}
+        multiline = {false}
+      />
+      </View>
+      <View style={styles.row}>
+    <Text style={styles.label}>Min price: </Text>
+      <TextInput
+         keyboardType='numeric'
+        style={{fontSize:20,width:200}}
+        placeholder="Min price"
+        value={minPrice}
+        onChangeText={text => setMinPrice(text)}
+        multiline = {false}
+      />
+      </View>
       <View style={[styles.row,{zIndex: 2}]}>
       <Text style={styles.label}>Gender: </Text>
     <DropDownPicker
@@ -111,4 +118,4 @@ const styles = StyleSheet.create({
   
 });
 
-export default UserDetail;
+export default UserPreferences;
