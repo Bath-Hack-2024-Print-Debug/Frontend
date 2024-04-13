@@ -1,14 +1,34 @@
 import * as React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import { HouseScreen,FriendsScreen } from "../screens";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import { Colors } from "../config";
 
-import { HomeScreen } from "../screens";
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export const AppStack = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
-    </Stack.Navigator>
+    <Tab.Navigator
+    screenOptions={({ route }) => ({
+      tabBarActiveTintColor: 'tomato',
+      tabBarInactiveTintColor: 'gray',
+      headerShown: false,
+      tabBarStyle: { backgroundColor: Colors.black, borderTopColor: Colors.black},
+    })}
+  >
+      <Tab.Screen name="Find Home" component={HouseScreen} options={{
+      tabBarLabel: 'Home',
+      tabBarIcon: ({ color, size }) => (
+        <Ionicons name="home" color={color} size={size} />
+      ),
+    }}/>
+      <Tab.Screen name="Find Friends" component={FriendsScreen} options={{
+      tabBarLabel: 'Friends',
+      tabBarIcon: ({ color, size }) => (
+        <Ionicons name="people" color={color} size={size} />
+      ),
+    }}/>
+    </Tab.Navigator>
   );
 };
