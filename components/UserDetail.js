@@ -2,12 +2,20 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import DropDownPicker from 'react-native-dropdown-picker';
+import { Colors } from '../config';
 
 const UserDetail = () => {
   const [gender, setGender] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date(1598051730000));
-  const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const [items, setItems] = useState([
+    {label: 'Male', value: 'male'},
+    {label: 'Female', value: 'female'},
+    {label: 'Other', value: 'other'}
+  ]);
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -26,24 +34,23 @@ const UserDetail = () => {
   return (
     <View style={styles.container}>
         <DateTimePicker
+            style = {{marginBottom:20}}
             testID="Set Date of Birth"
             value={date}
             mode='date'
             is24Hour={true}
             onChange={onChange}
         />
-      <Picker
-        selectedValue={gender}
-        style={styles.input}
-        onValueChange={(itemValue, itemIndex) => setGender(itemValue)}
-      >
-        <Picker.Item label="Select Gender" value="" />
-        <Picker.Item label="Male" value="male" />
-        <Picker.Item label="Female" value="female" />
-        <Picker.Item label="Other" value="other" />
-      </Picker>
+    <DropDownPicker
+      open={open}
+      value={gender}
+      items={items}
+      setOpen={setOpen}
+      setValue={setGender}
+      setItems={setItems}
+    />
       <TextInput
-        style={[styles.input, { height: 100 }]}
+        style={[styles.input, {fontSize:20}]}
         placeholder="Description"
         value={description}
         onChangeText={text => setDescription(text)}
@@ -56,19 +63,23 @@ const UserDetail = () => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingVertical: 20,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
   },
   input: {
+    marginVertical: 30,
+    borderRadius: 8,
+    backgroundColor: Colors.mediumGray,
     height: 'auto',
     width: '100%',
-    borderColor: 'gray',
-    borderWidth: 1,
+    borderWidth: 0,
     marginBottom: 20,
     paddingHorizontal: 10,
   },
+  
 });
 
 export default UserDetail;
