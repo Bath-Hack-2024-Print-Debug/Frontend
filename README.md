@@ -1,1 +1,5 @@
-# Frontend
+#install
+
+npm i
+
+npm start
