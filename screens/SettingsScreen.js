@@ -3,7 +3,7 @@ import { StyleSheet, Button, Text } from "react-native";
 import {View} from "../components";
 import { Colors } from "../config";
 import UserDetail from "../components/UserDetail";
-export const FriendsScreen = () => {
+export const SettingScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hello world</Text>
