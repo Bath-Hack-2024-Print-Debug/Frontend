@@ -8,6 +8,7 @@ import { Colors } from '../config';
 const UserDetail = () => {
   const [gender, setGender] = useState('');
   const [description, setDescription] = useState('');
+  const [city, setCity] = useState('');
   const [date, setDate] = useState(new Date(1598051730000));
   const [open, setOpen] = useState(false);
 
@@ -34,7 +35,17 @@ const UserDetail = () => {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <Text style={styles.label}>test</Text>
+    <Text style={styles.label}>City: </Text>
+      <TextInput
+        style={{fontSize:20,width:200}}
+        placeholder="City"
+        value={description}
+        onChangeText={text => setCity(text)}
+        multiline = {false}
+      />
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.label}>Date of Birth: </Text>
         <DateTimePicker
             style = {{}}
             testID="Set Date of Birth"
@@ -44,8 +55,8 @@ const UserDetail = () => {
             onChange={onChange}
         />
         </View>
-      <View style={styles.row}>
-      <Text style={styles.label}>test</Text>
+      <View style={[styles.row,{zIndex: 2}]}>
+      <Text style={styles.label}>Gender: </Text>
     <DropDownPicker
     containerStyle={{width: 200,elevation:30}}
       placeholder="select gender"
@@ -58,7 +69,7 @@ const UserDetail = () => {
     />
     </View>
     <View style={styles.row}>
-    <Text style={styles.label}>test</Text>
+    <Text style={styles.label}>Description: </Text>
       <TextInput
         style={{fontSize:20,width:200}}
         placeholder="Description"
@@ -87,7 +98,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
     width: '100%',
-    zIndex: 2,
     backgroundColor:Colors.mediumGray,
     borderRadius:8,
     paddingHorizontal:"3%",
