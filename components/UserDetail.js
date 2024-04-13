@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { View, TextInput, Button, StyleSheet,Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -33,15 +33,22 @@ const UserDetail = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.row}>
+        <Text style={styles.label}>test</Text>
         <DateTimePicker
-            style = {{marginBottom:20}}
+            style = {{}}
             testID="Set Date of Birth"
             value={date}
             mode='date'
             is24Hour={true}
             onChange={onChange}
         />
+        </View>
+      <View style={styles.row}>
+      <Text style={styles.label}>test</Text>
     <DropDownPicker
+    containerStyle={{width: 200,elevation:30}}
+      placeholder="select gender"
       open={open}
       value={gender}
       items={items}
@@ -49,13 +56,17 @@ const UserDetail = () => {
       setValue={setGender}
       setItems={setItems}
     />
+    </View>
+    <View style={styles.row}>
+    <Text style={styles.label}>test</Text>
       <TextInput
-        style={[styles.input, {fontSize:20}]}
+        style={{fontSize:20,width:200}}
         placeholder="Description"
         value={description}
         onChangeText={text => setDescription(text)}
         multiline = {false}
       />
+      </View>
       <Button title="Submit" onPress={handleSubmit} />
     </View>
   );
@@ -69,16 +80,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
   },
-  input: {
-    marginVertical: 30,
-    borderRadius: 8,
-    backgroundColor: Colors.mediumGray,
-    height: 'auto',
-    width: '100%',
-    borderWidth: 0,
+  row: {
+    paddingVertical:10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 20,
-    paddingHorizontal: 10,
+    width: '100%',
+    zIndex: 2,
+    backgroundColor:Colors.mediumGray,
+    borderRadius:8,
+    paddingHorizontal:"3%",
+    
   },
+  label:{
+    fontSize:20,
+    fontWeight:'bold',
+    color:Colors.white,
+  }
   
 });
 
