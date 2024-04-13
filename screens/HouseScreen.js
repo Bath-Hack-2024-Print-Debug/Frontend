@@ -9,7 +9,6 @@ export const HouseScreen = () => {
     <View style={styles.container}>
       <View style={styles.topbar}>
         <Text style={styles.text}>Potential housemates</Text>
-
         <SettingsIcon></SettingsIcon>
       </View>
       <ScrollView style={styles.cardContainer}>

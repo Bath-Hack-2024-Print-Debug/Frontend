@@ -10,12 +10,10 @@ const SettingsIcon = () => {
   };
 
   return (
-    <TouchableOpacity onPress={handleSettingsPress}>
       <Image
         source={require("../assets/settings.png")} // Replace with your settings icon image
-        style={{ width: 24, height: 24, marginRight: 10 }} // Adjust size and margin as needed
+        style={{ width: 24, height: 24, marginRight:10 ,marginTop:10 }} // Adjust size and margin as needed
       />
-    </TouchableOpacity>
   );
 };
 
