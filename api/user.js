@@ -37,3 +37,11 @@ export async function setUserDetails(name, DoB, desc,gender) {
     const data = await res.json(); // Parse the response to get the data
     return data;
   }
+
+  export async function getHouses() {
+    const options = await getAuthenticationOptions();
+    const res = await fetch(`${Backend}/zoopla/getPropertiesDetailsJSON`, options);
+    const data = await res.json(); // Parse the response to get the data
+    return data;
+  }
+

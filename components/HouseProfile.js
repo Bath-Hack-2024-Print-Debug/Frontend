@@ -47,6 +47,8 @@ export const HouseProfile = ({imageSource, price, address,desc}) => {
 
 const styles = StyleSheet.create({
   container: {
+    marginVertical:15,
+    borderRadius:8,
     flexDirection: 'column', // Arrange children horizontally
     flex: 1,
     backgroundColour: Colors.lightGreen,
@@ -62,10 +64,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: Colors.darkGreen,
+    color: Colors.black,
   },
   button: {
-    backgroundColor: Colors.darkGreen,
+    borderRadius:8,
+    backgroundColor: Colors.cream,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:'space-between',
@@ -78,7 +81,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
-    color: Colors.lightGreen,
+    color: Colors.black,
     marginBottom: 10,
   },
   modalContainer: {
