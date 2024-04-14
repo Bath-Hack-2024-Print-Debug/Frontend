@@ -18,7 +18,7 @@ export async function getAuthenticationOptions() {
   }
 }
 
-export async function getAuthenticationOptionsWithBody({body}) {
+export async function getAuthenticationOptionsWithBody(body) {
     const user = auth.currentUser;
     let token = null;
     if (user) {

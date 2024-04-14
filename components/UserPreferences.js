@@ -4,6 +4,7 @@ import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Colors } from '../config';
+import { setUserPreferences } from '../api/user';
 
 const UserPreferences = () => {
   const [gender, setGender] = useState('');
@@ -21,7 +22,7 @@ const UserPreferences = () => {
 
   const handleSubmit = () => {
     // Handle form submission
-
+    setUserPreferences(city,people,maxPrice,minPrice,gender)
 
     // You can send this data to an API, update state, etc.
   };

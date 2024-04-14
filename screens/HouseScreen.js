@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, ScrollView } from "react-native";
+import { StyleSheet, Text, ScrollView, Modal,Button, TouchableOpacity } from "react-native";
 import {View} from "../components";
 import { Colors } from "../config";
 import Card from "../components/Card";
@@ -8,6 +8,24 @@ import { HouseProfile } from "../components/HouseProfile";
 
 
 export const HouseScreen = () => {
+  const [data, setData] = useState(null); // State to store fetched data
+
+  useEffect(() => {
+    const fetchData = async () => {
+        const response = await getSimilarStudents(); // Replace with your API endpoint
+        setData(response); // Update state with fetched data
+    };
+    fetchData(); // Call fetchData function when component mounts
+  }, []);
+
+  const [preferences,setPreferences] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const changeModalVisible = () => {
+    setModalVisible(!modalVisible); // Correct, update state in an event handler
+  };
+  const changepref = () => {
+    setPreferences(!preferences); // Correct, update state in an event handler
+  };
   return (
     // <View style={styles.container}>
     //   <View style={styles.topbar}>
@@ -51,5 +69,14 @@ const styles = StyleSheet.create({
     backgroundColor:Colors.darkGreen,
     marginHorizontal:20,
     borderRadius:10,
-  }
+  },
+  buttonContainer:{
+    backgroundColor:Colors.darkGreen, 
+    paddingTop:60 ,
+    flex:1,
+    flexDirection:'row',
+    justifyContent:'center',
+    maxHeight:100,
+    fontSize:50,
+  },
 });
