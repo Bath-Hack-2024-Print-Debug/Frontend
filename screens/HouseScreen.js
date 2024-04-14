@@ -32,20 +32,7 @@ export const HouseScreen = () => {
   };
 
   return (
-<<<<<<< HEAD
-    // <View style={styles.container}>
-    //   <View style={styles.topbar}>
-    //     <Text style={styles.text}>Potential housemates</Text>
-    //     <SettingsIcon></SettingsIcon>
-    //   </View>
-    //   <ScrollView style={styles.cardContainer}>
-    //   <Card title={"Louis Viner"} description={"Hi! I am a second year student looking for housemates"} imageSource={require("../assets/PersonOne.jpeg")}></Card>
-    //   <Card title={"Alfie Downing"} description={"Please need friends"} imageSource={require("../assets/Person2.jpeg")}></Card>
-    //   </ScrollView>
-    // </View>
     <>
-=======
->>>>>>> 412123a479c59ea24aef331fc407e309695ac78e
     <View style={styles.container}>
       <View style={styles.topbar}>
         <Text style={styles.text}>House Finder</Text>
@@ -66,7 +53,7 @@ export const HouseScreen = () => {
         </Modal>
       <ScrollView style ={styles.scrollContainter}>
       {data && data.map((house, index) => {
-          {console.log(JSON.parse(house.images));}
+
           return <HouseProfile price={house.price} address={house.address} desc={house.description} imageSource={house.images[0]}></HouseProfile>
         })}
       </ScrollView>
@@ -107,7 +94,7 @@ const styles = StyleSheet.create({
   },
   cardContainer:{
     marginVertical:10,
-    backgroundColor:Colors.darkGreen,
+    backgroundColor:Colors.lightGreen,
     marginHorizontal:20,
     borderRadius:10,
   },

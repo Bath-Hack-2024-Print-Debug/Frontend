@@ -60,31 +60,33 @@ export const FriendsScreen = () => {
       {data && data.users && data.users.map((user, index) => {
           {console.log(user);}
           return (
+            <>
             <TouchableOpacity style={styles.container} onPress = {changeModalVisibleP}>
               <Card title={user.name} description={user.description} imageSource={require("../assets/PersonOne.jpeg")}></Card>
             </TouchableOpacity>
+            <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisibleP}
+            >
+            <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <FullFriend
+                  name = {user.name}
+                  imageSource = {require("../assets/PersonOne.jpeg")} 
+                  des = {user.description}
+                  gender = {user.gender}
+                  dob = {user.dob}
+                />
+                <TouchableOpacity onPress={changeModalVisibleP}>
+                  <Text style={styles.modalCloseButton}>Close</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+          </>
           );
         })}
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisibleP}
-        >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <FullFriend
-              name = {"Louis Viner"}
-              imageSource = {require("../assets/PersonOne.jpeg")} 
-              des = {"Hi! I am a second year student looking for housemates"}
-              gender = {"Male"}
-              dob = {"1999-01-01"}
-            />
-            <TouchableOpacity onPress={changeModalVisibleP}>
-              <Text style={styles.modalCloseButton}>Close</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
       </ScrollView>
     </View>
   );
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
   },
   cardContainer:{
     marginVertical:10,
-    backgroundColor:Colors.darkGreen,
+    backgroundColor:Colors.lightGreen,
     marginHorizontal:20,
     borderRadius:10,
   },
