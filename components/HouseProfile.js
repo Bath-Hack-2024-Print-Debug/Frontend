@@ -6,6 +6,7 @@ import { View } from './View';
 import { Colors } from "../config";
 import { FullHouse } from './FullHouse';
 
+
 export const HouseProfile = ({imageSource, price, address,desc}) => {
 
   const [modalVisible, setModalVisible] = React.useState(true);
@@ -46,7 +47,6 @@ export const HouseProfile = ({imageSource, price, address,desc}) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
     flexDirection: 'column', // Arrange children horizontally
     flex: 1,
     backgroundColour: Colors.lightGreen,
@@ -103,6 +103,5 @@ const styles = StyleSheet.create({
       alignContent: 'center',
       justifyContent: 'center',
       textAlign: 'center',
-
   },
 });

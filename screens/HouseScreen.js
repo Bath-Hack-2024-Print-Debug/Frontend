@@ -3,12 +3,22 @@ import { StyleSheet, Text, ScrollView, Modal,Button, TouchableOpacity } from "re
 import {View} from "../components";
 import { Colors } from "../config";
 import SettingsIcon from "../components/settings";
-import { useState,useEffect } from "react";
+
 import { HouseProfile } from "../components/HouseProfile";
 
 
 export const HouseScreen = () => {
   return (
+    // <View style={styles.container}>
+    //   <View style={styles.topbar}>
+    //     <Text style={styles.text}>Potential housemates</Text>
+    //     <SettingsIcon></SettingsIcon>
+    //   </View>
+    //   <ScrollView style={styles.cardContainer}>
+    //   <Card title={"Louis Viner"} description={"Hi! I am a second year student looking for housemates"} imageSource={require("../assets/PersonOne.jpeg")}></Card>
+    //   <Card title={"Alfie Downing"} description={"Please need friends"} imageSource={require("../assets/Person2.jpeg")}></Card>
+    //   </ScrollView>
+    // </View>
     <View style={styles.container}>
       <Text style={styles.text}>Potential houses</Text>
       <HouseProfile imageSource={require("../assets/Person2.jpeg")} price={1000} address={"1 BATH RD"} desc = {""}></HouseProfile>
@@ -51,12 +61,5 @@ const styles = StyleSheet.create({
     maxHeight:100,
     fontSize:50,
   },
-  buttonContainer:{
-    backgroundColor:Colors.darkGreen, 
-    paddingTop:60 ,
-    flex:1,
-    flexDirection:'row',
-    justifyContent:'center',
-    maxHeight:100,
-    fontSize:50,
   }});
+

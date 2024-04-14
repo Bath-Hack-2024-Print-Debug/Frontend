@@ -52,7 +52,6 @@ export const FullHouse = ( {imageSource, address, propertyDes}) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
     flexDirection: 'column', // Arrange children horizontally
     flex: 1,
     backroundColour: Colors.lightGreen,
