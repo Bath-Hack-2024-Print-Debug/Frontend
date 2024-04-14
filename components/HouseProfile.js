@@ -9,7 +9,7 @@ import { FullHouse } from './FullHouse';
 
 export const HouseProfile = ({imageSource, price, address,desc}) => {
 
-  const [modalVisible, setModalVisible] = React.useState(true);
+  const [modalVisible, setModalVisible] = React.useState(false);
   const changeModalVisible = () => {
     setModalVisible(!modalVisible); // Correct, update state in an event handler
   };

@@ -5,6 +5,7 @@ import { Colors } from "../config";
 import SettingsIcon from "../components/settings";
 
 import { HouseProfile } from "../components/HouseProfile";
+import SignOut from "../components/SignOut";
 
 
 export const HouseScreen = () => {
@@ -22,6 +23,7 @@ export const HouseScreen = () => {
     <View style={styles.container}>
       <Text style={styles.text}>Potential houses</Text>
       <HouseProfile imageSource={require("../assets/Person2.jpeg")} price={1000} address={"1 BATH RD"} desc = {""}></HouseProfile>
+      <SignOut></SignOut>
     </View>
   );
 };
