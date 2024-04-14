@@ -43,7 +43,7 @@ export const FriendsScreen = () => {
           <Button title = "User Preferences" onPress={changepref} disabled={!preferences}></Button>
           </View>
           {preferences ? <UserDetail/> : <UserPreferences/>}
-          <View style={{backgroundColor:Colors.darkGray, paddingBottom:70}}>
+          <View style={{backgroundColor:Colors.lightGreen, paddingBottom:40}}>
           <Button title = "close" onPress={changeModalVisible} ></Button>
           </View> 
         </Modal>
