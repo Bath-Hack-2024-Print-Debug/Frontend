@@ -5,7 +5,9 @@ import { Colors } from '../config';
 const Card = ({ imageSource, title, description }) => {
   return (
     <View style={styles.card}>
-      <Image source={imageSource} style={styles.image} />
+      <Image source={{
+          uri: imageSource,
+        }} style={styles.image} />
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{description}</Text>

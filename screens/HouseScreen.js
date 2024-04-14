@@ -55,9 +55,10 @@ export const HouseScreen = () => {
       {data && data.map((house, index) => {
 
           return <HouseProfile price={house.price} address={house.address} desc={house.description} imageSource={house.images[0]}></HouseProfile>
+
+        console.log()
         })}
       </ScrollView>
-      <SignOut></SignOut>
     </View>
     </>
   );
