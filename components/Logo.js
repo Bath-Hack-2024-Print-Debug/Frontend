@@ -9,7 +9,8 @@ export const Logo = ({ uri }) => {
 
 const styles = StyleSheet.create({
   image: {
-    width: 200,
-    height: 200
+    width: 250,
+    height: 200,
+    borderRadius: 10,
   }
 });
