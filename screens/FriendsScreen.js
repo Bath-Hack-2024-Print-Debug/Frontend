@@ -7,7 +7,7 @@ import UserPreferences from "../components/UserPreferences";
 
 export const FriendsScreen = () => {
   const [preferences,setPreferences] = useState(false);
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
   const changeModalVisible = () => {
     setModalVisible(!modalVisible); // Correct, update state in an event handler
   };
