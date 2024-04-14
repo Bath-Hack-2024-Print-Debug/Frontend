@@ -4,6 +4,7 @@ import {View} from "../components";
 import { Colors } from "../config";
 import SettingsIcon from "../components/settings";
 import { HouseProfile } from "../components/HouseProfile";
+import Card from "../components/Card";
 import SignOut from "../components/SignOut";
 import { useState,useEffect } from "react";
 import UserDetail from "../components/UserDetail";
@@ -31,6 +32,7 @@ export const HouseScreen = () => {
   };
 
   return (
+    <>
     <View style={styles.container}>
       <View style={styles.topbar}>
         <Text style={styles.text}>House Finder</Text>
@@ -51,11 +53,14 @@ export const HouseScreen = () => {
         </Modal>
       <ScrollView style ={styles.scrollContainter}>
       {data && data.map((house, index) => {
+
+          return <HouseProfile price={house.price} address={house.address} desc={house.description} imageSource={house.images[0]}></HouseProfile>
+
         console.log()
-          return <HouseProfile price={house.price} address={house.address} desc={house.description} imageSource={house.images}></HouseProfile>
         })}
       </ScrollView>
     </View>
+    </>
   );
 };
 const styles = StyleSheet.create({
@@ -90,7 +95,7 @@ const styles = StyleSheet.create({
   },
   cardContainer:{
     marginVertical:10,
-    backgroundColor:Colors.darkGreen,
+    backgroundColor:Colors.lightGreen,
     marginHorizontal:20,
     borderRadius:10,
   },

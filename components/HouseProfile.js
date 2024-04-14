@@ -12,12 +12,17 @@ export const HouseProfile = ({imageSource, price, address,desc}) => {
   const [modalVisible, setModalVisible] = React.useState(false);
   const changeModalVisible = () => {
     setModalVisible(!modalVisible); // Correct, update state in an event handler
+
   };
+
+  console.log("imageSource:", imageSource);
 
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.button} onPress = {changeModalVisible}>
-                <Image source={{'uri': imageSource}} style={styles.image} />
+
+           <Image source={{'uri': imageSource}} style={styles.image} />
+
                 <View style = {styles.buttonTextContainer}>
                     <Text style={styles.buttonText}>Address: {address}</Text>
                     <Text style={styles.buttonText}>Price per Month: £{price}</Text>
