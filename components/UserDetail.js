@@ -44,7 +44,7 @@ const UserDetail = () => {
       </View>
 
       <View style={styles.row}>
-    <Text style={styles.label}>description: </Text>
+    <Text style={styles.label}>Description: </Text>
       <TextInput
         style={{fontSize:20,width:200}}
         placeholder="..."
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
-    backgroundColor:Colors.darkGray,
+    backgroundColor:Colors.darkGreen,
   },
   row: {
     paddingVertical:10,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
     width: '100%',
-    backgroundColor:Colors.mediumGray,
+    backgroundColor:Colors.lightGreen,
     borderRadius:8,
     paddingHorizontal:"3%",
     

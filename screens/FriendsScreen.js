@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import { StyleSheet, Button, Text ,Modal} from "react-native";
+import { StyleSheet, Button, Text ,Modal, TouchableOpacity, Image} from "react-native";
 import {View} from "../components";
 import { Colors } from "../config";
 import UserDetail from "../components/UserDetail";
 import UserPreferences from "../components/UserPreferences";
+
 export const FriendsScreen = () => {
   const [preferences,setPreferences] = useState(false);
   const [modalVisible, setModalVisible] = useState(true);
@@ -14,9 +15,12 @@ export const FriendsScreen = () => {
     setPreferences(!preferences); // Correct, update state in an event handler
   };
   return (
+    <>
     <View style={styles.container}>
       <Text></Text>
-      <Button title = "open" onPress={changeModalVisible}></Button>
+      <TouchableOpacity style={styles.buttonHouse} onPress = {changeModalVisible}>
+        <Text style={styles.buttonText}>Set up HouseMate Finder</Text>
+      </TouchableOpacity>
       <Modal
         animationType="slide"
         transparent={true}
@@ -28,17 +32,23 @@ export const FriendsScreen = () => {
           {preferences ? <UserDetail/> : <UserPreferences/>}
           <View style={{backgroundColor:Colors.darkGray, paddingBottom:70}}>
           <Button title = "close" onPress={changeModalVisible} ></Button>
-          </View>
+          </View> 
         </Modal>
     </View>
+    <View style={styles.imageContainer}>
+      <Image source={require("../assets/HouseInARow.png")} style={styles.image}></Image>
+    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor:Colors.darkGray,
+    flex: 2,
+    backgroundColor:Colors.lightGreen,
     paddingTop: 50,
+    alignContent: 'center',
+    justifyContent: 'center',
   },
   text:{
     alignContent: 'center',
@@ -49,11 +59,41 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   buttonContainer:{
-    backgroundColor:Colors.darkGray, 
+    backgroundColor:Colors.darkGreen, 
     paddingTop:60 ,
     flex:1,
     flexDirection:'row',
     justifyContent:'center',
     maxHeight:100,
+    fontSize:50,
+  },
+  buttonWrapper:{
+    fontSize:50
+  },
+  buttonHouse:{
+    backgroundColor:Colors.darkGreen,
+    alignContent: 'center',
+    justifyContent: 'center',
+    padding: 20,
+    margin: 10,
+    borderRadius: 10,
+  },
+  buttonText:{
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: Colors.white,
+    paddingLeft: 10,
+    paddingRight: 10,
+    alignSelf: 'center',
+    textAlign: 'center',
+  },
+  imageContainer:{
+    flex:1,
+    backgroundColor:Colors.lightGreen,
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+  image:{
+    width: "100%",
   }
 });
