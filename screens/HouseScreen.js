@@ -2,48 +2,12 @@ import React from "react";
 import { StyleSheet, Text, ScrollView, Modal,Button, TouchableOpacity } from "react-native";
 import {View} from "../components";
 import { Colors } from "../config";
-import Card from "../components/Card";
 import SettingsIcon from "../components/settings";
+
 import { HouseProfile } from "../components/HouseProfile";
 
 
 export const HouseScreen = () => {
-  const [data, setData] = useState(null); // State to store fetched data
-
-  useEffect(() => {
-    const fetchData = async () => {
-        const response = await getSimilarStudents(); // Replace with your API endpoint
-        setData(response); // Update state with fetched data
-    };
-    fetchData(); // Call fetchData function when component mounts
-  }, []);
-
-  const [preferences,setPreferences] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
-  const changeModalVisible = () => {
-    setModalVisible(!modalVisible); // Correct, update state in an event handler
-  };
-  const changepref = () => {
-    setPreferences(!preferences); // Correct, update state in an event handler
-  };
-  const [data, setData] = useState(null); // State to store fetched data
-
-  useEffect(() => {
-    const fetchData = async () => {
-        const response = await getSimilarStudents(); // Replace with your API endpoint
-        setData(response); // Update state with fetched data
-    };
-    fetchData(); // Call fetchData function when component mounts
-  }, []);
-
-  const [preferences,setPreferences] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
-  const changeModalVisible = () => {
-    setModalVisible(!modalVisible); // Correct, update state in an event handler
-  };
-  const changepref = () => {
-    setPreferences(!preferences); // Correct, update state in an event handler
-  };
   return (
     // <View style={styles.container}>
     //   <View style={styles.topbar}>
@@ -57,13 +21,13 @@ export const HouseScreen = () => {
     // </View>
     <View style={styles.container}>
       <Text style={styles.text}>Potential houses</Text>
-      <HouseProfile imageSource={require("../assets/HouseBath.jpeg")} price={1000} address={"1 BATH RD"}></HouseProfile>
+      <HouseProfile imageSource={require("../assets/Person2.jpeg")} price={1000} address={"1 BATH RD"} desc = {""}></HouseProfile>
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
     paddingTop: 70,
     flex: 1,
     backgroundColor:Colors.lightGreen,
@@ -97,14 +61,5 @@ const styles = StyleSheet.create({
     maxHeight:100,
     fontSize:50,
   },
-  },
-  buttonContainer:{
-    backgroundColor:Colors.darkGreen, 
-    paddingTop:60 ,
-    flex:1,
-    flexDirection:'row',
-    justifyContent:'center',
-    maxHeight:100,
-    fontSize:50,
-  },
-});
+  }});
+

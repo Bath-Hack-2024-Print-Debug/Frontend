@@ -6,7 +6,8 @@ import { View } from './View';
 import { Colors } from "../config";
 import { FullHouse } from './FullHouse';
 
-export const HouseProfile = ({imageSource, price, address}) => {
+
+export const HouseProfile = ({imageSource, price, address,desc}) => {
 
   const [modalVisible, setModalVisible] = React.useState(true);
   const changeModalVisible = () => {
@@ -32,7 +33,7 @@ export const HouseProfile = ({imageSource, price, address}) => {
                         <FullHouse 
                           imageSource = {imageSource} 
                           address = {address} 
-                          propertyDes = {"Welcome to this charming family home nestled in the heart of historic Bath. Offering a seamless blend of modern comfort and classic elegance, this spacious residence boasts [number of bedrooms] bedrooms and [number of bathrooms] bathrooms, providing ample space for both relaxation and entertaining. The bright and airy living room is perfect for gatherings, while the cozy study area offers a tranquil space for work or leisure. The well-appointed kitchen features state-of-the-art appliances and ample storage, making meal preparation a joy. Step outside to the private garden, a serene retreat for enjoying the outdoors. With off-street parking for [number of vehicles] and convenient access to local amenities, schools, and transportation, this meticulously maintained property presents an exceptional opportunity for city living in Bath."}
+                          propertyDes = {desc}
                         />
                         <TouchableOpacity onPress={changeModalVisible}>
                             <Text style={styles.modalCloseButton}>Close</Text>
@@ -102,6 +103,5 @@ const styles = StyleSheet.create({
       alignContent: 'center',
       justifyContent: 'center',
       textAlign: 'center',
-      
   },
 });
