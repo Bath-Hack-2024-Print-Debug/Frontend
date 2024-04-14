@@ -53,10 +53,10 @@ export const HouseScreen = () => {
         </Modal>
       <ScrollView style ={styles.scrollContainter}>
       {data && data.map((house, index) => {
+      
+          return <HouseProfile price={house.price} address={house.address} desc={house.description} imageSource={house.images} housePredPrice ={house.predPrice}></HouseProfile>
 
-          return <HouseProfile price={house.price} address={house.address} desc={house.description} imageSource={house.images[0]}></HouseProfile>
-
-        console.log()
+        
         })}
       </ScrollView>
     </View>

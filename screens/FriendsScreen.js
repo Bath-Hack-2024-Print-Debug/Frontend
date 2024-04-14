@@ -1,104 +1,95 @@
-import React from "react";
-import { StyleSheet, Text, ScrollView, Modal,Button, TouchableOpacity } from "react-native";
-import {View} from "../components";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, ScrollView, Modal, Button, TouchableOpacity } from "react-native";
+import { View } from "../components";
 import { Colors } from "../config";
 import Card from "../components/Card";
 import SettingsIcon from "../components/settings";
 import { getSimilarStudents } from "../api/user";
-import { useState,useEffect } from "react";
 import UserDetail from "../components/UserDetail";
 import UserPreferences from "../components/UserPreferences";
 import { FullFriend } from "../components/FullFriend";
 
 export const FriendsScreen = () => {
   const [data, setData] = useState(null); // State to store fetched data
+  const [preferences, setPreferences] = useState(false);
+  const [activeUserIndex, setActiveUserIndex] = useState(null); // State to track which user's modal is open
 
   useEffect(() => {
     const fetchData = async () => {
-        const response = await getSimilarStudents(); // Replace with your API endpoint
-        setData(response); // Update state with fetched data
+      const response = await getSimilarStudents();
+      setData(response);
     };
-    fetchData(); // Call fetchData function when component mounts
+    fetchData();
   }, []);
 
-  const [preferences,setPreferences] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
-  const changeModalVisible = () => {
-    setModalVisible(!modalVisible); // Correct, update state in an event handler
-  };
+  const togglePreferences = () => setPreferences(!preferences);
+  const openUserModal = (index) => setActiveUserIndex(index);
+  const closeUserModal = () => setActiveUserIndex(null);
 
-  const [modalVisibleP, setModalVisibleP] = React.useState(false);
-  const changeModalVisibleP = () => {
-    setModalVisibleP(!modalVisibleP); // Correct, update state in an event handler
-  };
-
-
-
-  const changepref = () => {
-    setPreferences(!preferences); // Correct, update state in an event handler
-  };
   return (
     <View style={styles.container}>
       <View style={styles.topbar}>
         <Text style={styles.text}>Friend Finder</Text>
-        <TouchableOpacity onPress={changeModalVisible}><SettingsIcon></SettingsIcon></TouchableOpacity>
+        <TouchableOpacity onPress={() => setActiveUserIndex(-1)}><SettingsIcon/></TouchableOpacity>
       </View>
       <Modal
         animationType="slide"
         transparent={true}
-        visible={modalVisible}>
-          <View style={styles.buttonContainer}>
-          <Button title = "Account Details" onPress={changepref} disabled={preferences}></Button>
-          <Button title = "User Preferences" onPress={changepref} disabled={!preferences}></Button>
-          </View>
-          {preferences ? <UserDetail/> : <UserPreferences/>}
-          <View style={{backgroundColor:Colors.lightGreen, paddingBottom:40}}>
-          <Button title = "close" onPress={changeModalVisible} ></Button>
-          </View> 
-        </Modal>
+        visible={activeUserIndex !== null}
+      >
+        <View style={styles.buttonContainer}>
+          <Button title="Account Details" onPress={togglePreferences} disabled={preferences}></Button>
+          <Button title="User Preferences" onPress={togglePreferences} disabled={!preferences}></Button>
+        </View>
+        {preferences ? <UserDetail/> : <UserPreferences/>}
+        <View style={{ backgroundColor: Colors.lightGreen, paddingBottom: 40 }}>
+          <Button title="Close" onPress={closeUserModal}></Button>
+        </View>
+      </Modal>
       <ScrollView style={styles.cardContainer}>
-      {data && data.users && data.users.map((user, index) => {
-          {console.log(user);}
-          return (
-            <>
-            <TouchableOpacity style={styles.container} onPress = {changeModalVisibleP}>
+        {data && data.users && data.users.map((user, index) => (
+          <View key={index} style={styles.container}>
+            <TouchableOpacity style={styles.container} onPress={() => openUserModal(index)}>
               <Card title={user.name} description={user.description} imageSource={require("../assets/PersonOne.jpeg")}></Card>
             </TouchableOpacity>
-            <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisibleP}
-            >
-            <View style={styles.modalContainer}>
-              <View style={styles.modalContent}>
-                <FullFriend
-                  name = {user.name}
-                  imageSource = {require("../assets/PersonOne.jpeg")} 
-                  des = {user.description}
-                  gender = {user.gender}
-                  dob = {user.dob}
-                />
-                <TouchableOpacity onPress={changeModalVisibleP}>
-                  <Text style={styles.modalCloseButton}>Close</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </Modal>
-          </>
-          );
-        })}
+            {activeUserIndex === index && (
+              <Modal
+                animationType="slide"
+                transparent={true}
+                visible={true}
+              >
+                <View style={styles.modalContainer}>
+                  <View style={styles.modalContent}>
+                    <FullFriend
+                      name={user.name}
+                      imageSource={require("../assets/PersonOne.jpeg")} 
+                      des={user.description}
+                      gender={user.gender}
+                      dob={user.dob}
+                    />
+                    <TouchableOpacity onPress={closeUserModal}>
+                      <Text style={styles.modalCloseButton}>Close</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </Modal>
+            )}
+          </View>
+        ))}
       </ScrollView>
     </View>
   );
 };
 
+
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 70,
+    paddingTop: 20,
     flex: 1,
     backgroundColor:Colors.lightGreen,
   },
   topbar:{
+    paddingTop:40,
     flexDirection:'row',
     justifyContent:'space-between',
   },
