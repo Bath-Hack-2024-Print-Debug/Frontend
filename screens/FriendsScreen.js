@@ -32,6 +32,10 @@ export const FriendsScreen = () => {
     setModalVisibleP(!modalVisibleP); // Correct, update state in an event handler
   };
 
+  const [modalName, setModalName] = React.useState("");
+  const [modalDesc, setModalDesc] = React.useState("");
+  const [modalDoB, setModalDob] = React.useState(new Date(0));
+  const [modalGender, setModalGender] = React.useState("");
 
 
   const changepref = () => {
@@ -60,11 +64,20 @@ export const FriendsScreen = () => {
       {data && data.users && data.users.map((user, index) => {
           {console.log(user);}
           return (
-            <>
-            <TouchableOpacity style={styles.container} onPress = {changeModalVisibleP}>
+            <TouchableOpacity style={styles.marginVertical} onPress = { () =>
+              {changeModalVisibleP();
+              setModalName(user.name);
+              setModalDesc(user.description);
+              setModalDob(new Date(user.dob));
+              setModalGender(user.gender);
+              
+            }}>
               <Card title={user.name} description={user.description} imageSource={require("../assets/PersonOne.jpeg")}></Card>
-            </TouchableOpacity>
-            <Modal
+            </TouchableOpacity>  
+          );
+        })}
+      </ScrollView>
+      <Modal
             animationType="slide"
             transparent={true}
             visible={modalVisibleP}
@@ -72,11 +85,11 @@ export const FriendsScreen = () => {
             <View style={styles.modalContainer}>
               <View style={styles.modalContent}>
                 <FullFriend
-                  name = {user.name}
+                  name = {modalName}
                   imageSource = {require("../assets/PersonOne.jpeg")} 
-                  des = {user.description}
-                  gender = {user.gender}
-                  dob = {user.dob}
+                  des = {modalDesc}
+                  gender = {modalGender}
+                  dob = {modalDoB.toISOString()}
                 />
                 <TouchableOpacity onPress={changeModalVisibleP}>
                   <Text style={styles.modalCloseButton}>Close</Text>
@@ -84,17 +97,18 @@ export const FriendsScreen = () => {
               </View>
             </View>
           </Modal>
-          </>
-          );
-        })}
-      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 70,
+    paddingVertical: 70,
+    flex: 1,
+    backgroundColor:Colors.lightGreen,
+  },
+  containerCard: {
+    marginVertical: 10,
     flex: 1,
     backgroundColor:Colors.lightGreen,
   },
@@ -113,8 +127,9 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   cardContainer:{
+    alignContent:'flex-start',
     marginVertical:10,
-    backgroundColor:Colors.lightGreen,
+    backgroundColor:Colors.darkGreen,
     marginHorizontal:20,
     borderRadius:10,
   },
@@ -136,6 +151,8 @@ const styles = StyleSheet.create({
     
   },
   modalContent: {
+    width:'112%',
+    height:'110%',
     backgroundColor: Colors.lightGreen,
     padding: 20,
     borderRadius: 10,
@@ -146,6 +163,7 @@ const styles = StyleSheet.create({
       marginBottom: 20,
   },
   modalCloseButton: {
+      paddingBottom:40,
       fontSize: 16,
       color: 'blue',
       alignContent: 'center',

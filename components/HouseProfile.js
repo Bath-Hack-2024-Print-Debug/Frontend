@@ -21,7 +21,7 @@ export const HouseProfile = ({imageSource, price, address,desc}) => {
         <View style={styles.container}>
             <TouchableOpacity style={styles.button} onPress = {changeModalVisible}>
 
-           <Image source={{'uri': imageSource}} style={styles.image} />
+           <Image source={{uri: imageSource}} style={styles.image} />
 
                 <View style = {styles.buttonTextContainer}>
                     <Text style={styles.buttonText}>Address: {address}</Text>
