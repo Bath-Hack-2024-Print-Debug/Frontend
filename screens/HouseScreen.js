@@ -51,8 +51,8 @@ export const HouseScreen = () => {
         </Modal>
       <ScrollView style ={styles.scrollContainter}>
       {data && data.map((house, index) => {
-          {console.log(JSON.parse(house.images));}
-          return <HouseProfile price={house.price} address={house.address} desc={house.description} imageSource={house.images[0]}></HouseProfile>
+        console.log()
+          return <HouseProfile price={house.price} address={house.address} desc={house.description} imageSource={house.images}></HouseProfile>
         })}
       </ScrollView>
       <SignOut></SignOut>
