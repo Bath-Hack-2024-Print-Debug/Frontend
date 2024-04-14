@@ -61,5 +61,5 @@ const styles = StyleSheet.create({
     maxHeight:100,
     fontSize:50,
   },
-  }});
+  });
 
