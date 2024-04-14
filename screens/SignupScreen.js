@@ -34,7 +34,7 @@ export const SignupScreen = ({ navigation }) => {
       <KeyboardAwareScrollView enableOnAndroid={true}>
         {/* LogoContainer: consist app logo and screen title */}
         <View style={styles.logoContainer}>
-          <Logo uri={Images.logo} />
+          <Logo uri={require("../assets/DrawnLogo.jpeg")} />
           <Text style={styles.screenTitle}>Create a new account!</Text>
         </View>
         {/* Formik Wrapper */}
@@ -132,8 +132,9 @@ export const SignupScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.lightGreen,
     paddingHorizontal: 12,
+    paddingTop: 150,
   },
   logoContainer: {
     alignItems: "center",
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
   screenTitle: {
     fontSize: 32,
     fontWeight: "700",
-    color: Colors.black,
+    color: Colors.darkGreen,
     paddingTop: 20,
   },
   button: {
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 8,
-    backgroundColor: Colors.orange,
+    backgroundColor: Colors.darkGreen,
     padding: 10,
     borderRadius: 8,
   },
