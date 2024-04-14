@@ -1,11 +1,25 @@
-import React, {useState} from "react";
-import { StyleSheet, Button, Text ,Modal, TouchableOpacity, Image} from "react-native";
+import React from "react";
+import { StyleSheet, Text, ScrollView, Modal,Button, TouchableOpacity } from "react-native";
 import {View} from "../components";
 import { Colors } from "../config";
+import Card from "../components/Card";
+import SettingsIcon from "../components/settings";
+import { getSimilarStudents } from "../api/user";
+import { useState,useEffect } from "react";
 import UserDetail from "../components/UserDetail";
 import UserPreferences from "../components/UserPreferences";
 
 export const FriendsScreen = () => {
+  const [data, setData] = useState(null); // State to store fetched data
+
+  useEffect(() => {
+    const fetchData = async () => {
+        const response = await getSimilarStudents(); // Replace with your API endpoint
+        setData(response); // Update state with fetched data
+    };
+    fetchData(); // Call fetchData function when component mounts
+  }, []);
+
   const [preferences,setPreferences] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const changeModalVisible = () => {
@@ -15,12 +29,11 @@ export const FriendsScreen = () => {
     setPreferences(!preferences); // Correct, update state in an event handler
   };
   return (
-    <>
     <View style={styles.container}>
-      <Text></Text>
-      <TouchableOpacity style={styles.buttonHouse} onPress = {changeModalVisible}>
-        <Text style={styles.buttonText}>Set up HouseMate Finder</Text>
-      </TouchableOpacity>
+      <View style={styles.topbar}>
+        <Text style={styles.text}>Friend Finder</Text>
+        <TouchableOpacity onPress={changeModalVisible}><SettingsIcon></SettingsIcon></TouchableOpacity>
+      </View>
       <Modal
         animationType="slide"
         transparent={true}
@@ -34,29 +47,41 @@ export const FriendsScreen = () => {
           <Button title = "close" onPress={changeModalVisible} ></Button>
           </View> 
         </Modal>
+      <ScrollView style={styles.cardContainer}>
+      {data && data.users && data.users.map((user, index) => {
+          {console.log(user);}
+          return <Card title={user.name} description={user.description} imageSource={require("../assets/PersonOne.jpeg")}></Card>
+        })}
+      </ScrollView>
     </View>
-    <View style={styles.imageContainer}>
-      <Image source={require("../assets/HouseInARow.png")} style={styles.image}></Image>
-    </View>
-    </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    paddingTop: 70,
+    flex: 1,
     backgroundColor:Colors.lightGreen,
-    paddingTop: 50,
-    alignContent: 'center',
-    justifyContent: 'center',
+  },
+  topbar:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+  },
+  settings:{
+    marginLeft:'auto',
+    marginRight:20,
   },
   text:{
-    alignContent: 'center',
-    justifyContent: 'center',
-    fontSize: 20,
+    color: Colors.darkGreen,
+    fontSize: 33,
     fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop: 50,
+    marginLeft: 20,
+  },
+  cardContainer:{
+    marginVertical:10,
+    backgroundColor:Colors.darkGreen,
+    marginHorizontal:20,
+    borderRadius:10,
   },
   buttonContainer:{
     backgroundColor:Colors.darkGreen, 
@@ -67,33 +92,4 @@ const styles = StyleSheet.create({
     maxHeight:100,
     fontSize:50,
   },
-  buttonWrapper:{
-    fontSize:50
-  },
-  buttonHouse:{
-    backgroundColor:Colors.darkGreen,
-    alignContent: 'center',
-    justifyContent: 'center',
-    padding: 20,
-    margin: 10,
-    borderRadius: 10,
-  },
-  buttonText:{
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: Colors.white,
-    paddingLeft: 10,
-    paddingRight: 10,
-    alignSelf: 'center',
-    textAlign: 'center',
-  },
-  imageContainer:{
-    flex:1,
-    backgroundColor:Colors.lightGreen,
-    alignContent: 'center',
-    justifyContent: 'center',
-  },
-  image:{
-    width: "100%",
-  }
 });
