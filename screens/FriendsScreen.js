@@ -37,7 +37,6 @@ export const FriendsScreen = () => {
   const [modalDoB, setModalDob] = React.useState(new Date(0));
   const [modalGender, setModalGender] = React.useState("");
 
-
   const changepref = () => {
     setPreferences(!preferences); // Correct, update state in an event handler
   };
@@ -70,7 +69,6 @@ export const FriendsScreen = () => {
               setModalDesc(user.description);
               setModalDob(new Date(user.dob));
               setModalGender(user.gender);
-              
             }}>
               <Card title={user.name} description={user.description} imageSource={require("../assets/PersonOne.jpeg")}></Card>
             </TouchableOpacity>  
@@ -89,7 +87,7 @@ export const FriendsScreen = () => {
                   imageSource = {require("../assets/PersonOne.jpeg")} 
                   des = {modalDesc}
                   gender = {modalGender}
-                  dob = {modalDoB.toISOString()}
+                  dob = {(modalDoB).toDateString()}
                 />
                 <TouchableOpacity onPress={changeModalVisibleP}>
                   <Text style={styles.modalCloseButton}>Close</Text>

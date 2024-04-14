@@ -7,7 +7,7 @@ import { Colors } from "../config";
 import { FullHouse } from './FullHouse';
 
 
-export const HouseProfile = ({imageSource, price, address,desc}) => {
+export const HouseProfile = ({imageSource, price, address,desc,pricePredict}) => {
 
   const [modalVisible, setModalVisible] = React.useState(false);
   const changeModalVisible = () => {
@@ -26,6 +26,7 @@ export const HouseProfile = ({imageSource, price, address,desc}) => {
                 <View style = {styles.buttonTextContainer}>
                     <Text style={styles.buttonText}>Address: {address}</Text>
                     <Text style={styles.buttonText}>Price per Month: £{price}</Text>
+                    <Text style={styles.buttonText}>Our price estimate: £{pricePredict}</Text>
                 </View>
             </TouchableOpacity>
             <Modal

@@ -38,14 +38,6 @@ export const FullHouse = ( {imageSource, address, propertyDes}) => {
         <Text style={styles.text}>{propertyDes}</Text>
       </View>
       </ScrollView>
-      <View style = {styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress = {handleFair}>
-            <Text style={styles.buttonText}>Calculate fairness</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress = {handleRev}>
-            <Text style={styles.buttonText}>Landlord review</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };
@@ -99,15 +91,17 @@ const styles = StyleSheet.create({
     backroundColor: Colors.lightGreen,
   },
   buttonContainer: {
+    height:30,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backroundColor: Colors.lightGreen,
   },
   button: {
+    height:30,
     flex: 1,
     backgroundColor: Colors.cream,
-    padding: 10,
+    padding: 0,
     margin: 10,
     borderRadius: 10,
     alignItems: 'center',

@@ -54,7 +54,7 @@ export const HouseScreen = () => {
       <ScrollView style ={styles.scrollContainter}>
       {data && data.map((house, index) => {
 
-          return <HouseProfile price={house.price} address={house.address} desc={house.description} imageSource={house.images}></HouseProfile>
+          return <HouseProfile price={house.price} address={house.address} desc={house.description} imageSource={house.images} pricePredict={(house.predPrice)}></HouseProfile>
 
         console.log()
         })}
