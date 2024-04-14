@@ -8,6 +8,7 @@ import { getSimilarStudents } from "../api/user";
 import { useState,useEffect } from "react";
 import UserDetail from "../components/UserDetail";
 import UserPreferences from "../components/UserPreferences";
+import { FullFriend } from "../components/FullFriend";
 
 export const FriendsScreen = () => {
   const [data, setData] = useState(null); // State to store fetched data
@@ -25,6 +26,14 @@ export const FriendsScreen = () => {
   const changeModalVisible = () => {
     setModalVisible(!modalVisible); // Correct, update state in an event handler
   };
+
+  const [modalVisibleP, setModalVisibleP] = React.useState(false);
+  const changeModalVisibleP = () => {
+    setModalVisibleP(!modalVisibleP); // Correct, update state in an event handler
+  };
+
+
+
   const changepref = () => {
     setPreferences(!preferences); // Correct, update state in an event handler
   };
@@ -50,8 +59,32 @@ export const FriendsScreen = () => {
       <ScrollView style={styles.cardContainer}>
       {data && data.users && data.users.map((user, index) => {
           {console.log(user);}
-          return <Card title={user.name} description={user.description} imageSource={require("../assets/PersonOne.jpeg")}></Card>
+          return (
+            <TouchableOpacity style={styles.container} onPress = {changeModalVisibleP}>
+              <Card title={user.name} description={user.description} imageSource={require("../assets/PersonOne.jpeg")}></Card>
+            </TouchableOpacity>
+          );
         })}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisibleP}
+        >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <FullFriend
+              name = {"Louis Viner"}
+              imageSource = {require("../assets/PersonOne.jpeg")} 
+              des = {"Hi! I am a second year student looking for housemates"}
+              gender = {"Male"}
+              dob = {"1999-01-01"}
+            />
+            <TouchableOpacity onPress={changeModalVisibleP}>
+              <Text style={styles.modalCloseButton}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
       </ScrollView>
     </View>
   );
@@ -91,5 +124,30 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     maxHeight:100,
     fontSize:50,
+  },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    padding: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    
+  },
+  modalContent: {
+    backgroundColor: Colors.lightGreen,
+    padding: 20,
+    borderRadius: 10,
+    elevation: 5, // shadow on Android
+  },
+  modalText: {
+      fontSize: 18,
+      marginBottom: 20,
+  },
+  modalCloseButton: {
+      fontSize: 16,
+      color: 'blue',
+      alignContent: 'center',
+      justifyContent: 'center',
+      textAlign: 'center',
   },
 });

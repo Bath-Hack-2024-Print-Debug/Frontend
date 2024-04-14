@@ -5,6 +5,7 @@ import { Colors } from "../config";
 import SettingsIcon from "../components/settings";
 
 import { HouseProfile } from "../components/HouseProfile";
+import Card from "../components/Card";
 import SignOut from "../components/SignOut";
 
 
@@ -20,11 +21,13 @@ export const HouseScreen = () => {
     //   <Card title={"Alfie Downing"} description={"Please need friends"} imageSource={require("../assets/Person2.jpeg")}></Card>
     //   </ScrollView>
     // </View>
+    <>
     <View style={styles.container}>
       <Text style={styles.text}>Potential houses</Text>
       <HouseProfile imageSource={require("../assets/Person2.jpeg")} price={1000} address={"1 BATH RD"} desc = {""}></HouseProfile>
       <SignOut></SignOut>
     </View>
+    </>
   );
 };
 const styles = StyleSheet.create({
