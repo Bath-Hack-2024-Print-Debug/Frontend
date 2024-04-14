@@ -11,10 +11,10 @@ export const AppStack = () => {
   return (
     <Tab.Navigator
     screenOptions={({ route }) => ({
-      tabBarActiveTintColor: 'tomato',
-      tabBarInactiveTintColor: 'gray',
+      tabBarActiveTintColor: Colors.white,
+      tabBarInactiveTintColor: Colors.liightGreen,
       headerShown: false,
-      tabBarStyle: { backgroundColor: Colors.black, borderTopColor: Colors.black},
+      tabBarStyle: { backgroundColor: Colors.darkGreen, borderTopColor: Colors.black},
     })}
   >
       <Tab.Screen name="Find Home" component={HouseScreen} options={{
