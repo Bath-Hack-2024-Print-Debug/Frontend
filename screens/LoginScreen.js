@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, Image } from "react-native";
 import { Formik } from "formik";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -26,7 +26,7 @@ export const LoginScreen = ({ navigation }) => {
         <KeyboardAwareScrollView enableOnAndroid={true}>
           {/* LogoContainer: consist app logo and screen title */}
           <View style={styles.logoContainer}>
-            <Logo uri={Images.logo} />
+            <Logo uri={require("../assets/DrawnLogo.jpeg")} />
             <Text style={styles.screenTitle}>Welcome back!</Text>
           </View>
           <Formik
@@ -107,11 +107,6 @@ export const LoginScreen = ({ navigation }) => {
           />
         </KeyboardAwareScrollView>
       </View>
-
-      {/* App info footer */}
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>Expo Firebase Starter App</Text>
-      </View>
     </>
   );
 };
@@ -119,8 +114,11 @@ export const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.lightGreen,
     paddingHorizontal: 12,
+    alignContents: "center",
+    justifyContent: "center",
+    paddingTop: 150,
   },
   logoContainer: {
     alignItems: "center",
@@ -128,7 +126,7 @@ const styles = StyleSheet.create({
   screenTitle: {
     fontSize: 32,
     fontWeight: "700",
-    color: Colors.black,
+    color: Colors.darkGreen,
     paddingTop: 20,
   },
   footer: {
@@ -147,7 +145,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 8,
-    backgroundColor: Colors.orange,
+    backgroundColor: Colors.darkGreen,
     padding: 10,
     borderRadius: 8,
   },
