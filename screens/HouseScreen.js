@@ -55,7 +55,6 @@ export const HouseScreen = () => {
           return <HouseProfile price={house.price} address={house.address} desc={house.description} imageSource={house.images}></HouseProfile>
         })}
       </ScrollView>
-      <SignOut></SignOut>
     </View>
   );
 };

@@ -30,7 +30,7 @@ export const FullHouse = ( {imageSource, address, propertyDes}) => {
         <Text style={styles.addressText}>{address}</Text>
       </View>
       <View style={styles.imageContainer}>
-        <Image source={imageSource} style={styles.image} />
+        <Image source={{'uri':imageSource}} style={styles.image} />
       </View>
       <ScrollView style={styles.scrollView}>
       <View style={styles.textContainer}>

@@ -6,7 +6,7 @@ const Card = ({ imageSource, title, description }) => {
   return (
     <View style={styles.card}>
       <Image source={{
-          uri: "https://lid.zoocdn.com/u/2400/1800/acc71ee99f06d8bca2fcde6164aa2f2524e3fbb1.jpg",
+          uri: imageSource,
         }} style={styles.image} />
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>
